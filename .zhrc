@@ -1,0 +1,98 @@
+export NVM_DIR="$HOME/.nvm"
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PS1="$ "
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# autoload -U promptinit; promptinit
+# prompt pure
+
+source /Users/el057586/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+alias python=python3
+alias ng="npm list -g --depth=0"
+alias nl="npm list --depth=0"
+alias port9292="lsof -i :9292"
+alias port8080="lsof -i :8080"
+alias ip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
+
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/el057586/.oh-my-zsh"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git npm zsh-completions)
+autoload -U compinit && compinit
+
+
+source $ZSH/oh-my-zsh.sh
+source /Users/el057586/.rvm/gems/ruby-2.6.2/gems/colorls-1.2.0/lib/tab_complete.sh
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
+
+
+# SPACESHIP THEME
+
+SPACESHIP_PROMPT_ADD_NEWLINE=true
+# finger point
+# SPACESHIP_CHAR_SYMBOL="\uf0a4"
+# paper airplane
+# SPACESHIP_CHAR_SYMBOL="\uf1d9"
+# bike
+# SPACESHIP_CHAR_SYMBOL="\uf5a2"
+# triangle
+# SPACESHIP_CHAR_SYMBOL="\uf6c1"
+# chevron
+# SPACESHIP_CHAR_SYMBOL="\uf460"
+
+# SPACESHIP_CHAR_SUFFIX="  "
+SPACESHIP_GIT_SYMBOL="\uf408"
+# SPACESHIP_GIT_BRANCH_COLOR=""
+SPACESHIP_CHAR_COLOR_SUCCESS="green"
+SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
+SPACESHIP_USER_SHOW="true"
+SPACESHIP_GIT_PREFIX="-"
+SPACESHIP_NODE_SHOW=false
+SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_PACKAGE_PREFIX=""
+SPACESHIP_PACKAGE_SUFFIX=""
+SPACESHIP_PACKAGE_COLOR="green"
+SPACESHIP_PACKAGE_SYMBOL=""
+SPACESHIP_RUBY_SYMBOL="\uf219·"
+SPACESHIP_RUBY_PREFIX=""
+SPACESHIP_RUBY_SHOW=false
+SPACESHIP_EXEC_TIME_PREFIX=" took "
+
+alias lc="colorls --sort-dirs"
+
+function lt() {
+  if [ $# -eq 0 ]
+  then
+    colorls --group-directories-first --tree=1
+  else
+    colorls --group-directories-first --tree="$1";
+  fi
+}
+
